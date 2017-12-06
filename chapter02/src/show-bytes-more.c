@@ -73,6 +73,14 @@
    //==================
    // 2.57 changes end
    //==================
+
+   // test unsigned negative
+   unsigned a=100;
+   unsigned b=-a;
+   unsigned c=a+b;
+   show_bytes((byte_pointer)&a,sizeof(unsigned));
+   show_bytes((byte_pointer)&b,sizeof(unsigned));
+   show_bytes((byte_pointer)&c,sizeof(unsigned));
  }
  
  int main(int argc, char* argv[]) {
