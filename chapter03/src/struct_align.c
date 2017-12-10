@@ -17,6 +17,22 @@ typedef struct
     int h;
 }test;
 
+typedef struct
+{
+    int a;
+    char b;
+    short c;
+    char d;
+}test1;
+
+typedef struct
+{
+    int a;
+    short b;
+    char c;
+    char d;
+}test2;
+
 int main()
 {
     PRINT_D(sizeof(test))
@@ -28,5 +44,17 @@ int main()
     PRINT_D(OFFSET(test,f))
     PRINT_D(OFFSET(test,g))
     PRINT_D(OFFSET(test,h))
+
+    PRINT_D(sizeof(test1))
+    PRINT_D(OFFSET(test1,a))
+    PRINT_D(OFFSET(test1,b))
+    PRINT_D(OFFSET(test1,c))
+    PRINT_D(OFFSET(test1,d))
+
+    PRINT_D(sizeof(test2))
+    PRINT_D(OFFSET(test2,a))
+    PRINT_D(OFFSET(test2,b))
+    PRINT_D(OFFSET(test2,c))
+    PRINT_D(OFFSET(test2,d))
     return 0;
 }

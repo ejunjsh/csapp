@@ -289,3 +289,33 @@ compile:
 run:
 
     bin/unsigned-high-prod
+
+## 2.76
+
+compile:
+
+    gcc -m64 src/calloc.c -o bin/calloc
+
+run:
+
+    bin/calloc
+
+## 2.77
+
+compile:
+
+    gcc -m64 src/2.77.c -o bin/2.77
+
+run:
+
+    bin/2.77
+
+## 2.78
+
+compile:
+
+    gcc -m64 src/divide-power2.c -o bin/divide-power2
+
+run:
+
+    bin/divide-power2
