@@ -319,3 +319,13 @@ compile:
 run:
 
     bin/divide-power2
+
+## 2.79
+
+compile:
+
+    gcc -m64 src/mul3div4.c -o bin/mul3div4
+
+run:
+
+    bin/mul3div4
