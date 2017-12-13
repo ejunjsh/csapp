@@ -329,3 +329,13 @@ compile:
 run:
 
     bin/mul3div4
+
+## 2.80
+
+compile:
+
+    gcc -m64 src/threeforths.c -o bin/threeforths
+
+run:
+
+    bin/threeforths
