@@ -339,3 +339,21 @@ compile:
 run:
 
     bin/threeforths
+
+## 2.81
+
+A:
+
+    -1 << k
+
+B:
+
+    ~(-1 << k) << j
+
+compile:
+
+    gcc -m64 src/2.81.c -o bin/2.81
+
+run:
+
+    bin/2.81
