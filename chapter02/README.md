@@ -357,3 +357,22 @@ compile:
 run:
 
     bin/2.81
+
+## 2.82
+
+A:
+
+    Wrong,if x is INT_MIN
+
+B,C,D,E:
+
+    Right
+
+
+compile:
+
+    gcc -m64 src/2.82.c src/lib/random.c -o bin/2.82
+
+run:
+
+    bin/2.81
