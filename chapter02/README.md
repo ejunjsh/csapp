@@ -378,6 +378,7 @@ run:
     bin/2.81
 
 ## 2.83
+
 A.
 
     n = 0.yyyyy...
@@ -407,3 +408,13 @@ B.
     y = 010011, Y = 19, k = 6
 
     n = 19/63
+
+## 2.84
+
+compile:
+
+    gcc -m64 src/float-le.c -o bin/float-le
+
+run:
+
+    bin/float-le
