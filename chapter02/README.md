@@ -418,3 +418,32 @@ compile:
 run:
 
     bin/float-le
+
+## 2.85
+
+bias = 2^(k-1)-1
+
+V = 2^E * M
+
+
+A:
+    assume k=8 so bias=127
+    7.0=111.000....
+    M=1.11,f=0.11,E=2,e=bias+E=127+2=129
+    0 10000001 11000000000000000000000
+
+B:
+
+    biggest odd number, M must be 1.11111...,f=0.111111....
+    E = n, V = 0b11111111...(n+1 bits 1) = 2^(n+1) - 1
+    0 bias+n 11111....
+
+C:
+    
+    M must be 0b1.00...., f = 0b0.000...., E = 1 - bias
+    V = 2^(1-bias)
+    reciprocal
+    V = 2^(bias-1)
+    E = bias-1, e = bias + E=bias+bias-1
+    assume k=8 so e=127+127-1=253
+    0 11111101 00000000000000000000000
