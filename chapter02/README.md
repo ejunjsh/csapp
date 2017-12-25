@@ -448,3 +448,13 @@ C:
     E = bias-1, e = bias + E=bias+bias-1
     assume k=8 so e=127+127-1=253
     0 11111101 00000000000000000000000
+
+## 2.86
+
+bias = 2^(15-1) - 1
+
+|description| binary | decimal |
+|-----------|--------|---------|
+|least positive unstandard| 0 0000...(15) 0 000...(62)1 | 2^(1-bias-63) |
+|least positive standard| 0 000...(14)1 1 000....(63) | 2^(1-bias) |
+|bigest standard| 0 111...(14)0 1 111...(63) | 2^bias * (2-2^-63) |
