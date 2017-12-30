@@ -7,10 +7,6 @@ mkdir bin
 
 ## 2.55
 
-```c
-!INCLUDE "./code/show-bytes.c"
-```
-
 uname -mr:
 
     4.13.0-16-generic x86_64
@@ -497,3 +493,13 @@ compile:
 run:
 
     bin/2.89
+
+## 2.90
+
+compile:
+
+    gcc -m64 src/fpwr2.c -o bin/fpwr2
+
+run:
+
+    bin/fpwr2
