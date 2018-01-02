@@ -531,6 +531,17 @@ B
 
 C
 
-    0b11.00100100_0_0111111011011
-    0b11.00100100_1_0010010010010
+    0b11.0010010000111111011011
+    0b11.0010010010010010010010
+    
     9th
+
+## 2.92
+
+compile:
+
+    gcc -m64 src/float-negate.c `ls src/lib/*.c`  -o bin/float-negate
+
+run:
+
+    bin/float-negate
