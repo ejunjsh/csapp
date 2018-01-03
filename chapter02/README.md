@@ -545,3 +545,13 @@ compile:
 run:
 
     bin/float-negate
+
+## 2.93
+
+compile:
+
+    gcc -m64 src/float-absval.c `ls src/lib/*.c`  -o bin/float-absval
+
+run:
+
+    bin/float-absval
