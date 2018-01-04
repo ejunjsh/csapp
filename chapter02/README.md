@@ -555,3 +555,13 @@ compile:
 run:
 
     bin/float-absval
+
+## 2.94
+
+compile:
+
+    gcc -m64 src/float-twice.c `ls src/lib/*.c`  -o bin/float-twice
+
+run:
+
+    bin/float-twice
