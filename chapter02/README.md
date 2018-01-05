@@ -565,3 +565,13 @@ compile:
 run:
 
     bin/float-twice
+
+## 2.95
+
+compile:
+
+    gcc -m64 src/float-half.c `ls src/lib/*.c`  -o bin/float-half
+
+run:
+
+    bin/float-half
