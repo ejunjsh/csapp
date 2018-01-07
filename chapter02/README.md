@@ -575,3 +575,24 @@ compile:
 run:
 
     bin/float-half
+
+## 2.96
+
+compile:
+
+    gcc -m64 src/float-f2i.c `ls src/lib/*.c`  -o bin/float-f2i
+
+run:
+
+    bin/float-f2i
+
+## 2.97
+
+compile:
+
+    gcc -m64 src/float-i2f.c `ls src/lib/*.c`  -o bin/float-i2f
+
+run:
+
+    bin/float-i2f
+
