@@ -31,6 +31,8 @@ ref 2.6
 
     ux = x + x_63*2^64
     uy = y + y_63*2^64  
+    
+    //x_63 and y_63 represent highest bit of x and y.
 
 so 
 
@@ -39,6 +41,8 @@ so
 
 2^128 overflows, so
 
-    x ∙ y = ux ∙ uy - (x_63*y + y_63*x)2^64 
+    x ∙ y = ux ∙ uy - (x_63*y + y_63*x)*2^64 
+
+    //(x_63*y + y_63*x)*2^64 = (x_63*y + y_63*x) << 64
 
 see [3.59.s](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.59.s)
