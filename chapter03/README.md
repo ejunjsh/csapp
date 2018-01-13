@@ -17,6 +17,8 @@ run:
 
 ## 3.58
 
+see [3.58](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.58)
+
 compile:
 
     gcc -c -m64 src/3.58/decode2.s -o bin/decode2.o
@@ -31,7 +33,7 @@ ref 2.6
 
     ux = x + x_63*2^64
     uy = y + y_63*2^64  
-    
+
     //x_63 and y_63 represent highest bit of x and y.
 
 so 
@@ -46,3 +48,40 @@ so
     //(x_63*y + y_63*x)*2^64 = (x_63*y + y_63*x) << 64
 
 see [3.59.s](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.59.s)
+
+## 3.60
+
+A.
+
+|val|register|
+|---|---|
+|x|%rdi|
+|n|%esi|
+|result|%rax|
+|mask|%rdx|
+
+B.
+
+    result = 0
+
+    mask = 1
+
+C.
+
+    mask != 0
+
+D.
+
+    mask = mask << n
+
+E.
+
+    see [3.60](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.60)
+
+compile:
+
+    gcc -c -m64 src/3.60/loop.s -o bin/loop.o
+    gcc -m64 src/3.60/main.c src/3.60/loop2.c bin/loop.o -o bin/3.60   
+run:
+
+    bin/3.60
