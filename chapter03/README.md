@@ -74,14 +74,23 @@ D.
 
     mask = mask << n
 
-E.
-
-    see [3.60](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.60)
+E.  see [3.60](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.60)
 
 compile:
 
     gcc -c -m64 src/3.60/loop.s -o bin/loop.o
     gcc -m64 src/3.60/main.c src/3.60/loop2.c bin/loop.o -o bin/3.60   
+
 run:
 
     bin/3.60
+
+## 3.61
+
+compile:
+
+    gcc -m64 src/cread-alt.c -o bin/cread-alt
+
+run:
+
+    bin/cread-altbin/3.60
