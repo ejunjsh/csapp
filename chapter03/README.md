@@ -94,3 +94,7 @@ compile:
 run:
 
     bin/cread-altbin/3.60
+
+## 3.62
+
+see [3.62.c](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.62.c)
