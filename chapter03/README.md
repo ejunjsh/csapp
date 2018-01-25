@@ -175,7 +175,7 @@ similarly, in 3d array
 
 B.
 
-see [3.64](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.64)
+see [3.64/store-ele.s](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.64)
 
 base on comments,
 
@@ -188,3 +188,21 @@ so
     R = 7
     S = 5
     T = 13
+
+## 3.65
+
+A.
+
+    &A[i][j] in %rdx
+
+B.
+
+    &A[j][i] in %rax
+
+C.
+
+    addq $8, %rdx # means A[i][j] -> A[i][j+1]
+
+    addq $120, %rax # means A[j][i] -> A[j+1][i], 120 == 8*M
+
+    M = 15
