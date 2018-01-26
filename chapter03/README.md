@@ -93,7 +93,7 @@ compile:
 
 run:
 
-    bin/cread-altbin/3.60
+    bin/cread-alt
 
 ## 3.62
 ````c
@@ -206,3 +206,28 @@ C.
     addq $120, %rax # means A[j][i] -> A[j+1][i], 120 == 8*M
 
     M = 15
+
+## 3.66
+
+base on comments in asm code
+
+    cmpq %rdi, %rdx    # cmp t5 & t3
+    jne .L3            # if t5 != n*3, loop
+
+t5 is var i, so `NR(n) == n*3`
+
+    leaq 1(,%rdi,4), %r8        # t1 = n*4 + 1
+    .....
+    salq $3, %r8                # t1 = t1*8 = 8*(n*4 + 1)
+    .....
+    addq %r8, %rcx              # t4 = t1+t4 = A + j*8 + 8*(n*4 + 1)
+
+in every loop, pointer move `8*(n*4 + 1)` bytes, so `NC(n) == n*4 + 1`
+
+compile:
+
+    gcc src/3.66/*  -o bin/summ-col
+
+run:
+
+    bin/summ-col
