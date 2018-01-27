@@ -231,3 +231,86 @@ compile:
 run:
 
     bin/summ-col
+
+## 3.67
+
+A.
+
+    104  +------------------+
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+     64  +------------------+ <-- %rdi
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+     32  +------------------+
+         |         z        |
+     24  +------------------+
+         |        &z        |
+     16  +------------------+
+         |         y        |
+      8  +------------------+
+         |         x        |
+      0  +------------------+ <-- %rsp
+
+
+B.
+
+eval pass a new address %rsp+64 to process
+
+C.
+
+process access s by %rsp+offset, not by %rdi
+
+D.
+
+eval pass address %rsp+64 to process, process store data from here as beginning,
+finially return this address
+
+E.
+
+    104  +------------------+
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+     88  +------------------+
+         |        z         |
+     80  +------------------+
+         |        x         |
+     72  +------------------+
+         |        y         |
+     64  +------------------+ <-- %rdi(eval pass in)
+         |                  |  \
+         |                  |   -- %rax(process pass out)
+         |                  |
+         |                  |
+         |                  |
+         |                  |
+     32  +------------------+
+         |         z        |
+     24  +------------------+
+         |        &z        |
+     16  +------------------+
+         |         y        |
+      8  +------------------+
+         |         x        |
+      0  +------------------+ <-- %rsp in eval
+         |                  |
+     -8  +------------------+ <-- %rsp in process
+
+F.
+
+caller find space and pass space address to callee, callee store data on this
+space area and return this address
