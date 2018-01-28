@@ -314,3 +314,18 @@ F.
 
 caller find space and pass space address to callee, callee store data on this
 space area and return this address
+
+## 3.68
+
+see comments in [3.68.s](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.68.s)
+then
+
+    4 < B <= 8
+    6 < A <= 10
+    44 < A*B <= 46
+
+so
+
+    A = 9
+    B = 5
+
