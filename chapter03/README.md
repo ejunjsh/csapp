@@ -348,7 +348,7 @@ test:
 
   movslq %ecx, %rcx             # n = bp->first + bp->last, convert to long
 
-  # save n to address 8*(ap->idx) + bp+i*40+0x8 + 0x8  (0x10)
+  # save n to address 8*(ap->idx) + bp+i*40 + (0x8 + 0x8)  (0x10)
   # bp+i*40+0x8 means ap
   # ap + 0x8 means &(ap->x)
   # ap + 0x8 + 8*(ap->idx) means &(ap-x[ap->idx])
@@ -365,7 +365,64 @@ test:
   #   } a_struct
   retq
 ````
-because bp->first takes 8 Bytes,(bp->first+b->a) takes 0x120=288
-so b->a takes 280 , as i know, size of a_struct is 40
-
+conclusion from above comments:
+bp->first takes 8 Bytes,(bp->first+b->a) takes 0x120=288
+so b->a takes 280 ,
+and size of a_struct is 40
 so CNT=280/40=7
+
+## 3.70
+
+A
+
+|val|offset|
+|---|------|
+|e1.p|0|
+|e1.y|8|
+|e2.x|0|
+|e2.next|8|
+
+B
+
+    16
+
+C
+
+see comment
+````s
+# void proc(union ele *up)
+# up in %rdi
+proc:
+  # %rax = *(up+8), don't know it's next or y
+  movq 8(%rdi), %rax
+
+  # %rdx = *( *(up+8) ), %rax stands for a pointer
+  # so *( *(up+8) ) means *(up->e2.next)
+  movq (%rax), %rdx
+
+  # %rdx = *( *(up->e2.next) )
+  # %rdx is treated as a pointer
+  # so %rdx stores *( *(up->e2.next).e1.p )
+  movq (%rdx), %rdx
+
+  # %rax stores *(up+8)
+  # %rax is treated as a pointer
+  # so %rax = *( up->e2.next ), stands for another union ele's address
+  #
+  # in subq, %rdx is a long number
+  # *( *(up->e2.next)+8 ) must be a long number
+  # so 8(%rax) means *(up->e2.next).e1.y
+  subq 8(%rax), %rdx
+
+  # %rdi never changes in previous instructions
+  # instruction below is the final assignment
+  # so (%rdi) means up->e2.x
+  movq %rdx, (%rdi)
+  ret
+````
+
+````C
+void proc(union ele *up) {
+  up->e2.x = *( *(up->e2.next).e1.p ) - *(up->e2.next).e1.y
+}
+````
