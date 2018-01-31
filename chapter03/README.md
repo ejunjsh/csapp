@@ -426,3 +426,14 @@ void proc(union ele *up) {
   up->e2.x = *( *(up->e2.next).e1.p ) - *(up->e2.next).e1.y
 }
 ````
+
+## 3.71
+see [good-echo.c](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.71/good-echo.c)
+
+compile
+
+    gcc src/3.71/good-echo.c -o bin/good-echo
+
+run
+
+    bin/good-echo
