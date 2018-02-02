@@ -481,3 +481,14 @@ D
     p is aligned by 16
 
     s2 is the least multiple of 16 that preserve 8*n size space
+
+## 3.73
+see [3.73.c](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.73.c)
+
+compile
+
+    gcc src/3.73.c -o bin/3.73
+
+run
+
+    bin/3.73
