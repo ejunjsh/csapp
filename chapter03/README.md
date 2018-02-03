@@ -492,3 +492,14 @@ compile
 run
 
     bin/3.73
+
+## 3.74
+see [3.74.c](https://github.com/ejunjsh/csapp/blob/master/chapter03/src/3.74.c)
+
+compile
+
+    gcc src/3.74.c -o bin/3.74
+
+run
+
+    bin/3.74
