@@ -73,3 +73,55 @@ see [bubble-sort-pointer.ys](https://github.com/ejunjsh/csapp/blob/master/chapte
     0x01f8: 0x0000000000000000      0x0000000000000013
 
 see above output, the order of array is ascend.
+
+## 4.48
+see [bubble-sort-pointer-3-cmovl.ys](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/4.48/bubble-sort-pointer-3-cmovl.ys)
+
+    cd src/
+    sim/misc/yas 4.48/bubble-sort-pointer-3-cmovl.ys
+    sim/misc/yis 4.48/bubble-sort-pointer-3-cmovl.yo
+    Stopped in 143 steps at PC = 0x13.  Status 'HLT', CC Z=1 S=0 O=0
+    Changes to registers:
+    %rax:   0x0000000000000000      0x0000000000000020
+    %rsp:   0x0000000000000000      0x0000000000000200
+    %rsi:   0x0000000000000000      0x0000000000000018
+    %rdi:   0x0000000000000000      0x0000000000000018
+    %r9:    0x0000000000000000      0x0000000000000002
+    %r10:   0x0000000000000000      0x0000000000000001
+    %r11:   0x0000000000000000      0x0000000000000001
+    %r13:   0x0000000000000000      0x0000000000000001
+    %r14:   0x0000000000000000      0x0000000000000008
+
+    Changes to memory:
+    0x0018: 0x0000000000000004      0x0000000000000001
+    0x0020: 0x0000000000000003      0x0000000000000002
+    0x0028: 0x0000000000000002      0x0000000000000003
+    0x0030: 0x0000000000000001      0x0000000000000004
+    0x01f0: 0x0000000000000000      0x0000000000000055
+    0x01f8: 0x0000000000000000      0x0000000000000013
+
+## 4.49
+see [bubble-sort-pointer-1-cmovge.ys](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/4.49/bubble-sort-pointer-1-cmovge.ys)
+
+    cd src/
+    sim/misc/yas 4.49/bubble-sort-pointer-1-cmovge.ys
+    sim/misc/yis 4.49/bubble-sort-pointer-1-cmovge.yo
+    Stopped in 155 steps at PC = 0x13.  Status 'HLT', CC Z=1 S=0 O=0
+    Changes to registers:
+    %rax:   0x0000000000000000      0x0000000000000020
+    %rsp:   0x0000000000000000      0x0000000000000200
+    %rsi:   0x0000000000000000      0x0000000000000018
+    %rdi:   0x0000000000000000      0x0000000000000018
+    %r9:    0x0000000000000000      0x0000000000000002
+    %r10:   0x0000000000000000      0x0000000000000001
+    %r11:   0x0000000000000000      0x0000000000000002
+    %r13:   0x0000000000000000      0x0000000000000001
+    %r14:   0x0000000000000000      0x0000000000000008
+
+    Changes to memory:
+    0x0018: 0x0000000000000004      0x0000000000000001
+    0x0020: 0x0000000000000003      0x0000000000000002
+    0x0028: 0x0000000000000002      0x0000000000000003
+    0x0030: 0x0000000000000001      0x0000000000000004
+    0x01f0: 0x0000000000000000      0x0000000000000055
+    0x01f8: 0x0000000000000000      0x0000000000000013
