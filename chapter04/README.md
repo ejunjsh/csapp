@@ -125,3 +125,40 @@ see [bubble-sort-pointer-1-cmovge.ys](https://github.com/ejunjsh/csapp/blob/mast
     0x0030: 0x0000000000000001      0x0000000000000004
     0x01f0: 0x0000000000000000      0x0000000000000055
     0x01f8: 0x0000000000000000      0x0000000000000013
+
+## 4.50
+see [switch.ys](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/4.50/switch.ys)
+
+    cd src/
+    sim/misc/yas 4.50/switch.ys
+    sim/misc/yis 4.50/switch.yo
+    Stopped in 133 steps at PC = 0x13.  Status 'HLT', CC Z=0 S=0 O=0
+    Changes to registers:
+    %rax:   0x0000000000000000      0x0000000000000bbb
+    %rcx:   0x0000000000000000      0x00000000000000e7
+    %rdx:   0x0000000000000000      0xfffffffffffffffd
+    %rsp:   0x0000000000000000      0x0000000000000200
+    %rdi:   0x0000000000000000      0x00000000000001a8
+    %r8:    0x0000000000000000      0x0000000000000008
+    %r11:   0x0000000000000000      0x0000000000000001
+
+    Changes to memory:
+    0x0000: 0x000000000200f430      0x0000000000000ddd
+    0x0008: 0x0000000038800000      0x0000000000000ddd
+    0x0010: 0x0000000000000000      0x0000000000000ccc
+    0x0018: 0x0000000000000000      0x0000000000000bbb
+    0x01e8: 0x0000000000000000      0x00000000000001a8
+    0x01f0: 0x0000000000000000      0x00000000000000ac
+    0x01f8: 0x0000000000000000      0x0000000000000013
+
+
+## 4.51
+
+|phase|iaddq V,rB|
+|--|--|
+|F|icode:ifun = M1[PC]; rA:rB = M1[PC+1]; valC = M8[PC+2]; valP = PC + 10;|
+|D|valB = R[rB]|
+|E|valE = valB + valC; set CC|
+|M||
+|W|R[rB] = valE|
+|PC|PC = valP|
