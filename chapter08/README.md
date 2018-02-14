@@ -55,3 +55,32 @@ compile
 run 
 
     bin/8.11
+
+## 8.12
+
+8 lines
+
+
+                            c
+                        +-------+---------+
+                        |    "hello"   "hello"
+                        |    
+                    c   |   p
+                +-------+-------+---------+
+                |     fork   "hello"   "hello"
+                |
+                |           c
+                |       +-------+---------+
+                |       |    "hello"   "hello"
+                |       |    
+                |   p   |   p    
+         +------+-------+-------+---------+
+        main  fork    fork   "hello"   "hello"
+
+compile
+
+    gcc -m64 -pthread src/8.12.c src/csapp.c  -o bin/8.12
+
+run 
+
+    bin/8.12
