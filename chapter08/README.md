@@ -84,3 +84,19 @@ compile
 run 
 
     bin/8.12
+
+## 8.13
+
+    x=4
+    x=3
+    x=2
+
+the parent process don't share x with the child process, they have own x.
+
+compile
+
+    gcc -m64 -pthread src/8.13.c src/csapp.c  -o bin/8.13
+
+run 
+
+    bin/8.13
