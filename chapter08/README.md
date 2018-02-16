@@ -87,11 +87,12 @@ run
 
 ## 8.13
 
+the parent process don't share x with the child process, they have own x.
+    
     x=4
     x=3
     x=2
 
-the parent process don't share x with the child process, they have own x.
 
 compile
 
@@ -100,3 +101,56 @@ compile
 run 
 
     bin/8.13
+
+## 8.14
+
+3 lines
+
+
+                            c
+                        +-------+
+                        |    "hello"
+                        |    
+                    c   |   p
+                +-------+-------+
+                |     fork   "hello"
+                |
+                |   p   
+         +------+-------+-------+
+        main  fork   return  "hello"
+
+
+compile
+
+    gcc -m64 -pthread src/8.14.c src/csapp.c  -o bin/8.14
+
+run 
+
+    bin/8.14
+
+## 8.15
+
+5 lines
+
+
+                            c
+                        +-------+-------+---------+
+                        |    "hello"  return    "hello"
+                        |    
+                    c   |   p
+                +-------+-------+-------+---------+
+                |     fork   "hello"  return    "hello"
+                |
+                |
+                |   p   
+         +------+-------+-------+
+        main  fork   return  "hello"
+
+
+compile
+
+    gcc -m64 -pthread src/8.15.c src/csapp.c  -o bin/8.15
+
+run 
+
+    bin/8.15
