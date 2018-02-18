@@ -162,3 +162,7 @@ see [switch.ys](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/4.50/
 |M||
 |W|R[rB] = valE|
 |PC|PC = valP|
+
+## 4.52
+
+see [seq-full.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/seq/seq-full.hcl)
