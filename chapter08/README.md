@@ -169,3 +169,19 @@ compile
 run 
 
     bin/8.16
+
+## 8.17
+
+                            1        Bye
+                    +-------+---------+-------------+ exit(2)
+                    |    printf     printf          |
+                    |                               |
+        hello       |        0                      |             2       Bye
+    +------+--------+--------+----------------------+--------+--------+---------+
+    main  printf    fork    printf              waitpid     printf   printf   exit(2)
+
+ all possible output are 
+
+    hello  1  Bye 0     2  Bye
+    hello  1  0   Bye   2  Bye
+    hello  0  1   Bye   2  Bye
