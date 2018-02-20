@@ -154,3 +154,18 @@ compile
 run 
 
     bin/8.15
+
+## 8.16
+
+child process has its own counter.
+
+    counter = 2
+
+
+compile
+
+    gcc -m64 -pthread src/8.16.c src/csapp.c  -o bin/8.16
+
+run 
+
+    bin/8.16
