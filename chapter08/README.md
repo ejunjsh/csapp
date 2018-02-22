@@ -185,3 +185,36 @@ run
     hello  1  Bye 0     2  Bye
     hello  1  0   Bye   2  Bye
     hello  0  1   Bye   2  Bye
+
+
+## 8.18
+
+
+                            c
+                        +-------+---------+
+                        |      "0"     exit "2"
+                        |    
+                    c   |   p
+                +-------+-------+---------+
+                |     fork     "1"     exit "2"
+                |   (atexit)
+                |           c
+                |       +-------+---------+
+                |       |      "0"      exit
+                |       |    
+                |   p   |   p    
+         +------+-------+-------+---------+
+        main  fork    fork     "1"      exit
+
+2 must be behind 0/1
+
+B & D is impossible.
+
+
+compile
+
+    gcc -m64 -pthread src/8.18.c src/csapp.c  -o bin/8.18
+
+run 
+
+    bin/8.18
