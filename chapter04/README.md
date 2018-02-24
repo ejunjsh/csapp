@@ -373,3 +373,9 @@ finally:
 see [pipe-stall.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-stall.hcl)
 
 you can `diff` to see differences with [pipe-std.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pip/pipe-std.hcl)
+
+## 4.54
+
+see [pipe-full.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-full.hcl)
+
+you can search the keyword with "IIADDQ" in this file to see differences with [pipe-std.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-std.hcl)
