@@ -89,3 +89,26 @@ worse case: blocks are random.
 |32|2048|4 |4  |128|23|7|2|
 |32|1024|2 |8  |64 |25|6|1|
 |32|1024|32|2  |16 |23|4|5|
+
+## 6.27
+
+A.
+
+t = 0x45 = 0b01000101, s = 0b001, b = xx(xx may be 00/01/10/11)
+
+address may be
+
+    01000101 001 xx
+
+    format
+    0 1000 1010 01xx
+
+address range: 0x08A4 - 0x08A7
+
+t = 0x38
+
+address range: 0x0704 - 0x0707
+
+B.
+
+0x1238 - 0x123B
