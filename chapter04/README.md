@@ -379,3 +379,43 @@ you can `diff` to see differences with [pipe-std.hcl](https://github.com/ejunjsh
 see [pipe-full.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-full.hcl)
 
 you can search the keyword with "IIADDQ" in this file to see differences with [pipe-std.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-std.hcl)
+
+## 4.55
+
+Problem mismatch with skeleton code, we follow the code here:
+**change J_YES to UNCOND**
+
+one point is
+
+    M_icode == IJXX && M_ifun != UNCOND
+
+means all jxx except jmp instruction
+
+another important point is Mispredicted branch condition
+
+origin
+
+    (E_icode == IJXX && !e_Cnd)
+
+now
+
+    (E_icode == IJXX && E_ifun != UNCOND && e_Cnd)
+
+e_Cnd means misprediction
+
+see [pipe-nt.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-nt.hcl)
+
+you can `diff` to see differences with [pipe-std.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-std.hcl)
+
+## 4.56
+
+Problem mismatch with skeleton code, we follow the code here: change J_YES to UNCOND
+
+almost same like 4.55. main differences are
+
+pay attention to whether valC is greater or lower than valP
+pass both valC and valP back by M registers because if misprediction happens we need judge jumping back to valC or valP
+
+see [pipe-btfnt.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-btfnt.hcl)
+
+you can `diff` to see differences with [pipe-std.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-std.hcl)
