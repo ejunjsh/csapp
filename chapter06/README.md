@@ -346,3 +346,26 @@ dst:
 |r1|m |m |m |m |
 |r2|m |m |m |m |
 |r3|m |m |m |m |
+
+
+## 6.35
+
+The cache can store all data in array, so the cache hit except address of every row.
+
+src:
+
+|  |c0|c1|c2|c3|
+|--|--|--|--|--|
+|r0|m |h |h |h |
+|r1|m |h |h |h |
+|r2|m |h |h |h |
+|r3|m |h |h |h |
+
+dst:
+
+|  |c0|c1|c2|c3|
+|--|--|--|--|--|
+|r0|m |h |h |h |
+|r1|m |h |h |h |
+|r2|m |h |h |h |
+|r3|m |h |h |h |
