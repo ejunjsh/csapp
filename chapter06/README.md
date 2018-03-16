@@ -667,3 +667,35 @@ C. sumC
 same as miss rate when N = 64
 
 25%
+
+## 6.38
+
+A.
+
+    4 \* 16 \* 16
+
+B.
+
+    sizeof(point_color) == 16, B = 32
+
+    the first access always miss
+
+    square[i][j].c = 0
+
+    then cache 2 point_color
+
+    square[i][j].m = 0
+    square[i][j].y = 0
+    square[i][j].k = 0
+    square[i][j+1].c = 0
+    square[i][j+1].m = 0
+    square[i][j+1].y = 0
+    square[i][j+1].k = 0
+
+    above are all hit in cache
+
+    so miss count is 4 \* 16 \* 16 \* 1/8
+
+C.
+
+    1/8
