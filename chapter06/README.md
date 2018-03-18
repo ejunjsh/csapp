@@ -761,3 +761,63 @@ B.
 C.
 
     1/4
+
+
+## 6.41
+
+    every loop
+
+    buffer[i][j].r = 0;
+
+    always miss, then cache one piexl, so
+
+    buffer[i][j].g = 0;
+    buffer[i][j].b = 0;
+    buffer[i][j].a = 0;
+
+    all hit
+
+    so miss rate is 1/4
+
+## 6.42
+
+same like
+
+```c
+for (i = 0; i < 640; i++)
+  for (j = 0; j < 480; j++)
+    buffer[i][j].r = 0;
+    buffer[i][j].g = 0;
+    buffer[i][j].b = 0;
+    buffer[i][j].a = 0;
+```
+
+C = 64KB, B = 4B, sizeof(piexl) = 4
+
+    buffer[i][j].r = 0;
+
+miss, cache one piexl, so
+
+    buffer[i][j].g = 0;
+    buffer[i][j].b = 0;
+    buffer[i][j].a = 0;
+
+all hit
+
+miss rate is 1/4
+
+## 6.43
+
+same like
+````c
+for (i = 0; i < 640; i++)
+  for (j = 0; j < 480; j++)
+    (int*)&buffer[i][j] = 0;
+````
+every loop,
+````c
+(int*)&buffer[i][j] = 0;
+````
+always miss
+
+miss rate 100%
