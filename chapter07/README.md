@@ -39,3 +39,15 @@ validate
     0000000000000000 g     O .data.rel      0000000000000008 bufp0
     0000000000000000         *UND*  0000000000000000 buf
     0000000000000016 g     F .text  000000000000004d swap
+
+
+## 7.7
+
+comment the `x=-0.0`
+
+test
+
+    gcc src/bar5.c src/foo5.c -o bin/7.7
+    bin/7.7
+
+    
