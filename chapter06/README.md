@@ -852,3 +852,20 @@ below result is my ubuntu vm
     64k     26454   24121   24048   22366   18928   15898   13520   12085   11909   12027   11759   11940   12405   11392   19897
     32k     28031   27246   27121   26213   25871   25724   25560   24040   22829   24797   25142   22529   22486   24229   23733
     16k     27966   27000   26404   25543   25321   24763   24695   20813   21712   22757   20687   19456   20337   18884   20664
+
+
+## 6.45
+
+see [transpose.c](https://github.com/ejunjsh/csapp/blob/master/chapter06/src/transpose.c)
+
+compile
+
+    gcc src/transpose.c -o bin/transpose
+
+run
+
+    date +%s;bin/transpose;date +%s
+
+you can adjust the `BLOCK` in the code to find which value make the code faster. 
+
+In my machine, the `BLOCK` 8 is the best value.
