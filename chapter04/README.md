@@ -419,3 +419,60 @@ pass both valC and valP back by M registers because if misprediction happens we 
 see [pipe-btfnt.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-btfnt.hcl)
 
 you can `diff` to see differences with [pipe-std.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-std.hcl)
+
+## 4.57
+
+A.
+
+consider load/use hazard
+
+    E_icode in { IMRMOVQ, IPOPQ } && E_dstM in { d_srcA, d_srcB };
+
+|situation|1|2|3|4|
+|-|-|-|-|-|
+|E_dstM == d_srcA|1|1|0|0|
+|E_dstM == d_srcB|1|0|1|0|
+
+situation 4:
+
+normal, no hazard happens
+
+situation 1,2,3:
+
+load/use hazard happens
+
+if E_icode in { IMRMOVQ, IPOPQ }, then E_dstM must not be RNONE
+
+consider situation 1 and 3, E_dstM == d_srcB, then d_srcB is not RNONE and must
+be used in phase E, so load-forward can't work. load-forward only work in situation 2!
+
+consider all the instructions that d_srcA is not RNONE
+
+|instructions|d_srcA|valA used in phase E?|load-forward works?|
+|-|-|-|-|
+|rrmovq|rA|Y|N|
+|rmmovq|rA|N|Y|
+|opq|rA|Y|N|
+|pushq|rA|N|Y|
+|ret|rsp|N|N|
+|popq|rsp|N|N|
+
+ret and popq can't work because d_srcA == d_srcB == %rsp, that's not in
+situation 2!!
+
+finally, load/use only work in condition:
+
+    E_icode in { IMRMOVQ, IPOPQ } &&
+    (
+      E_dstM == d_srcB ||
+      (
+        E_dstM == d_srcA && !(D_icode in { IRMMOVQ, IPUSHQ })
+      )
+    );
+
+
+B.
+
+see [pipe-lf.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-lf.hcl)
+
+you can `diff` to see differences with [pipe-std.hcl](https://github.com/ejunjsh/csapp/blob/master/chapter04/src/sim/pipe/pipe-std.hcl)
