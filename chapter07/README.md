@@ -50,4 +50,55 @@ test
     gcc src/bar5.c src/foo5.c -o bin/7.7
     bin/7.7
 
-    
+## 7.8
+
+A.
+
+    main.1
+
+    main.2
+
+B.
+
+    unknown
+
+    unknown
+
+C.
+
+    error
+
+    error
+
+
+## 7.9
+
+the `0x48` is low byte of assemble code of `main` method, why it is a byte,because `bar6.c` declare it as a char.
+
+when linking,the first byte of assemble code of the `main` method  is set to `main` variable in `bar6.c`
+
+test
+
+    gcc src/bar6.c src/foo6.c -o bin/7.9
+    bin/7.9
+    0x55
+
+my output is `0x55`
+
+    objdump -d bin/7.9
+
+ignore all but main function below
+
+    000000000000066e <main>:
+    66e:   55                      push   %rbp
+    66f:   48 89 e5                mov    %rsp,%rbp
+    672:   48 83 ec 10             sub    $0x10,%rsp
+    676:   89 7d fc                mov    %edi,-0x4(%rbp)
+    679:   48 89 75 f0             mov    %rsi,-0x10(%rbp)
+    67d:   e8 c8 ff ff ff          callq  64a <p2>
+    682:   b8 00 00 00 00          mov    $0x0,%eax
+    687:   c9                      leaveq
+    688:   c3                      retq
+    689:   0f 1f 80 00 00 00 00    nopl   0x0(%rax)
+
+you will see `0x55` in `66e:   55                      push   %rbp`
