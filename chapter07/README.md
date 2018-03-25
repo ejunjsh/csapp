@@ -73,9 +73,9 @@ C.
 
 ## 7.9
 
-the `0x48` is low byte of assemble code of `main` method, why it is a byte,because `bar6.c` declare it as a char.
+the `0x48` is low byte of assemble code of `main` function, why it is a byte,because `bar6.c` declare it as a char.
 
-when linking,the first byte of assemble code of the `main` method  is set to `main` variable in `bar6.c`
+when linking,the first byte of assemble code of the `main` function  is set to `main` variable in `bar6.c`
 
 test
 
@@ -87,7 +87,7 @@ my output is `0x55`
 
     objdump -d bin/7.9
 
-ignore all but main function below
+ignore all but `main` function below
 
     000000000000066e <main>:
     66e:   55                      push   %rbp
