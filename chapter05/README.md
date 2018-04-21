@@ -161,5 +161,29 @@ run
     bin/5.14
 
 
+5.15
 
+maybe
+
+1. float mul capatity limit(less than 6)
+2. register renaming limit
+
+compile
+
+    gcc src/5.15.c src/vec.c -o bin/5.15
+
+run 
+
+    bin/5.15
+
+
+5.16
+
+compile
+
+    gcc src/5.16.c src/vec.c -o bin/5.16
+
+run 
+
+    bin/5.16
 
