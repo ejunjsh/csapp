@@ -161,7 +161,7 @@ run
     bin/5.14
 
 
-5.15
+# 5.15
 
 maybe
 
@@ -177,7 +177,7 @@ run
     bin/5.15
 
 
-5.16
+# 5.16
 
 compile
 
@@ -187,3 +187,12 @@ run
 
     bin/5.16
 
+# 5.17
+
+compile
+
+    gcc src/5.17.c  -o bin/5.17
+
+run 
+
+    bin/5.17
