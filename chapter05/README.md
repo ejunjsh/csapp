@@ -196,3 +196,13 @@ compile
 run 
 
     bin/5.17
+
+# 5.17
+
+compile
+
+    gcc src/5.18.c  -o bin/5.18
+
+run 
+
+    bin/5.18
