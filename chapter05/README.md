@@ -197,7 +197,7 @@ run
 
     bin/5.17
 
-# 5.17
+# 5.18
 
 compile
 
@@ -206,3 +206,13 @@ compile
 run 
 
     bin/5.18
+
+# 5.19
+
+compile
+
+    gcc src/5.19.c  -o bin/5.19
+
+run 
+
+    bin/5.19
