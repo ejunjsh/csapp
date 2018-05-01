@@ -102,3 +102,96 @@ ignore all but `main` function below
     689:   0f 1f 80 00 00 00 00    nopl   0x0(%rax)
 
 you will see `0x55` in `66e:   55                      push   %rbp`
+
+## 7.10
+
+A.
+
+    gcc p.o libx.a
+
+B.
+
+    gcc p.o libx.a liby.a libx.a
+
+C.
+
+    gcc p.o libx.a liby.a libx.a libz.a
+
+## 7.11
+
+    space for section .bss
+
+## 7.12
+A.
+
+    ADDR(s) = ADDR(.text) = 0x4004e0
+
+    ADDR(r.symbol) = ADDR(swap) = 0x4004f8
+
+    refaddr = ADDR(s) + r.offset = 0x4004ea
+
+    *refptr = (unsigned) (ADDR(r.symbol) + r.addend - refaddr) = 0xa
+
+B.
+
+    ADDR(s) = ADDR(.text) = 0x4004d0
+
+    ADDR(r.symbol) = ADDR(swap) = 0x400500
+
+    refaddr = ADDR(s) + r.offset = 0x4004da
+
+    *refptr = (unsigned) (ADDR(r.symbol) + r.addend - refaddr) = 0x22
+
+## 7.13
+A
+
+in my test system, the libc.a in the path /usr/lib/x86_64-linux-gnu/libc.a
+
+    ar -t /usr/lib/x86_64-linux-gnu/libc.a
+
+output
+
+    init-first.o
+    libc-start.o
+    sysdep.o
+    version.o
+    check_fds.o
+    libc-tls.o
+    elf-init.o
+    dso_handle.o
+    errno.o
+    errno-loc.o
+    iconv_open.o
+    iconv.o
+    ....    
+
+for libm.a
+
+    ar -t ./x86_64-linux-gnu/libm.a
+    ar: ./x86_64-linux-gnu/libm.a: File format not recognized
+
+😓
+
+B.
+
+    gcc -Og src/little.c -o bin/Og
+    gcc -Og -g src/little.c -o bin/Ogg
+    objdump -d bin/Og > Og.objdump
+    objdump -d bin/Ogg > Ogg.objdump
+    diff Ogg.objdump Og.objdump
+    2c2
+    < bin/Ogg:     file format elf64-x86-64
+    ---
+    > bin/Og:     file format elf64-x86-64
+
+almost same
+
+C.
+
+    ldd bin/og
+
+Output
+
+    linux-vdso.so.1 =>  (0x00007ffd157f6000)
+    libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fadd775a000)
+    /lib64/ld-linux-x86-64.so.2 (0x00007fadd7d3c000)
