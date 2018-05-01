@@ -869,3 +869,22 @@ run
 you can adjust the `BLOCK` in the code to find which value make the code faster. 
 
 In my machine, the `BLOCK` 8 is the best value.
+
+## 6.46
+
+see [convert.c](https://github.com/ejunjsh/csapp/blob/master/chapter06/src/convert.c)
+
+compile
+
+    gcc src/convert.c -o bin/convert
+
+run
+
+    date +%s;bin/convert;date +%s
+
+you can adjust the `BLOCK` in the code to find which value make the code faster. 
+
+In my machine, the `BLOCK` 16 is the best value.
+
+the original code in book run during 13 seconds.
+after i optimize the code, the result of running is during 4 seconds
