@@ -277,7 +277,10 @@ run
 
 there are some problem:
 
-    while you run mysystem, and open another terminal to kill the child process,you will get the message from the orignal terminal "exit caused by signal, code: 15". but there are a child process that is still running in background and using 100% cpu.you can top to see:
+    while you run mysystem, and open another terminal to kill the child process,
+    you will get the message from the orignal terminal "exit caused by signal, code: 15". 
+    but there are a child process that is still running in background and using 100% cpu.
+    you can top to see:
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
     4791 sky       20   0    6508    776    696 R 100.0  0.0   5:28.98 wait-sig
 
