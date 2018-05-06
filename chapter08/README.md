@@ -275,13 +275,30 @@ run
 
     bin/mysystem
 
+output 
+
+    child pid: 4695
+    normally exit, code: 10
+    child pid: 4697
+    exit caused by signal, code: 15
+
 there are some problem:
 
-    while you run mysystem, and open another terminal to kill the child process,
-    you will get the message from the orignal terminal "exit caused by signal, code: 15". 
-    but there are a child process that is still running in background and using 100% cpu.
-    you can top to see:
+while you run mysystem, and open another terminal to kill the child process "4697":
+
+    kill 4697
+
+you will get the message from the orignal terminal
+
+    exit caused by signal, code: 15
+
+but there are a child process that is still running in background and using 100% cpu.
+you can top to see:
+
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
     4791 sky       20   0    6508    776    696 R 100.0  0.0   5:28.98 wait-sig
 
-    why? becasue the kill only kill its parent process "sh -c".
+why? becasue the kill only kill its parent process "sh -c".
+
+    mysystem ----> sh -c -------> wait-sig
+    pid=xxxx      pid=4697        pid=4791
