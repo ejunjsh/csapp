@@ -218,3 +218,67 @@ compile
 run 
 
     bin/8.18
+
+## 8.19
+
+compile
+
+    gcc -m64 -pthread src/8.19.c src/csapp.c  -o bin/8.19
+
+run 
+
+    bin/8.19
+
+you will see rule is 2^n
+
+## 8.20
+
+compile
+
+    gcc -m64 -pthread src/8.20.c src/csapp.c  -o bin/8.20
+
+run 
+
+    bin/8.20
+
+## 8.21
+
+compile
+
+    gcc -m64 -pthread src/8.21.c src/csapp.c  -o bin/8.21
+
+run 
+
+    bin/8.21
+
+in my computer,always
+
+    bac
+
+but should be
+
+    bac
+
+or 
+
+    abc
+
+## 8.22
+
+compile
+    
+    gcc -m64 -pthread src/exit-code.c src/csapp.c  -o bin/exit-code
+    gcc -m64 -pthread src/wait-sig.c src/csapp.c  -o bin/wait-sig
+    gcc -m64 -pthread src/mysystem.c src/csapp.c  -o bin/mysystem
+
+run 
+
+    bin/mysystem
+
+there are some problem:
+
+    while you run mysystem, and open another terminal to kill the child process,you will get the message from the orignal terminal "exit caused by signal, code: 15". but there are a child process that is still running in background and using 100% cpu.you can top to see:
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+    4791 sky       20   0    6508    776    696 R 100.0  0.0   5:28.98 wait-sig
+
+    why? becasue the kill only kill its parent process "sh -c".
