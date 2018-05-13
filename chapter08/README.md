@@ -302,3 +302,37 @@ why? becasue the kill only kill its parent process "sh -c".
 
     mysystem ----> sh -c -------> wait-sig
     pid=xxxx      pid=4697        pid=4791
+
+## 8.23
+
+compile
+    
+    gcc -m64 -pthread src/8.23.c src/csapp.c  -o bin/8.23
+
+run 
+
+    bin/8.23
+
+
+       SIGUSR2      SIGUSR2  SIGUSR2  SIGUSR2  SIGUSR2
+          |            |        |        |        |
+    being handled   Pending  Canceld  Canceld  Canceld
+     need 1 sec
+
+
+there's only one pending signal all the time. other same type signals will be
+canceled.
+
+if you modify code
+
+remove sleep
+
+    /* sleep(1); */
+
+or 
+
+send more signals
+
+    for (i = 0; i < 500000; i++)
+
+you will get different counter output.
