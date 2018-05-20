@@ -336,3 +336,13 @@ send more signals
     for (i = 0; i < 500000; i++)
 
 you will get different counter output.
+
+## 8.24
+
+compile
+    
+    gcc -m64 -pthread src/8.24.c src/csapp.c  -o bin/8.24
+
+run 
+
+    bin/8.24
