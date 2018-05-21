@@ -346,3 +346,13 @@ compile
 run 
 
     bin/8.24
+
+## 8.25
+
+compile
+    
+    gcc -m64 -pthread src/8.25.c src/csapp.c  -o bin/8.25
+
+run 
+
+    bin/8.25
