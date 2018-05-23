@@ -356,3 +356,13 @@ compile
 run 
 
     bin/8.25
+
+## 8.26
+
+compile
+    
+    gcc -m64 -pthread src/main.c src/shell.c src/job.c src/csapp.c  -o bin/myshell
+
+run 
+
+    bin/8.25
