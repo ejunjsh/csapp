@@ -109,8 +109,6 @@ D.
 
 ## 9.13
 
-9.13
-
 VA: 0x0040
 
 A.
@@ -129,3 +127,13 @@ B.
 |TLBT |0x00 |
 |hit? |No   |
 |page falut?|Yes  |
+
+## 9.14
+
+compile
+
+    gcc -pthread  src/9.14.c src/csapp.c -o bin/9.14
+
+run
+
+    bin/9.14
