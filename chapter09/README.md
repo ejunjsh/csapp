@@ -137,3 +137,12 @@ compile
 run
 
     bin/9.14
+
+## 9.15
+
+|malloc|size|header|
+|-|-|-|
+|malloc(3) | 8| 0x9|
+|malloc(11)|16|0x11|
+|malloc(20)|24|0x19|
+|malloc(21)|32|0x100|
