@@ -145,4 +145,15 @@ run
 |malloc(3) | 8| 0x9|
 |malloc(11)|16|0x11|
 |malloc(20)|24|0x19|
-|malloc(21)|32|0x100|
+|malloc(21)|32|0x21|
+
+## 9.16
+
+**min block size= max (min allocated block or min spare block)**
+
+|alignment| allocated block | spare block | min block size|
+|---------|-----------------|-------------|---------------|
+|word     |Header & Footer  |Header & Footer| 16 |
+|word     |Header           |Header & Footer| 16 |
+|double word|Header & Footer|Header & Footer| 16 |
+|double word|Header         |Header & Footer| 16 | 
