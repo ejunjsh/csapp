@@ -3,6 +3,7 @@
 ## precondition
 ````shell
 mkdir bin
+cd chapter09
 ````
 
 ## 9.5
@@ -157,3 +158,20 @@ run
 |word     |Header           |Header & Footer| 16 |
 |double word|Header & Footer|Header & Footer| 16 |
 |double word|Header         |Header & Footer| 16 | 
+
+
+## 9.17
+
+see [mm.v1/mm.c](https://github.com/ejunjsh/csapp/blob/master/chapter09/src/mm.v1/mm.c)
+
+build
+
+    gcc -c src/mm.v1/mm.c -I./src/mm/ -o mm.v1.o
+
+## 9.18
+
+see [mm.v2/mm.c](https://github.com/ejunjsh/csapp/blob/master/chapter09/src/mm.v2/mm.c)
+
+build
+
+    gcc -c src/mm.v2/mm.c -I./src/mm/ -o mm.v2.o
