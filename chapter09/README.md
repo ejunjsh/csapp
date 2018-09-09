@@ -175,3 +175,54 @@ see [mm.v2/mm.c](https://github.com/ejunjsh/csapp/blob/master/chapter09/src/mm.v
 build
 
     gcc -c src/mm.v2/mm.c -I./src/mm/ -o mm.v2.o
+
+## 9.19
+
+1 
+
+    a: ☑️
+    b: ✖️
+    c: ✖️
+    d: ✖️
+
+2
+
+    a: ✖️
+    b: ✖️
+    c: ✖️
+    d: ☑️
+
+3
+
+    only b is ☑️
+
+## 9.20
+
+use 9.17 and 9.18 malloc to test with the std malloc
+
+build
+
+    gcc -DCUS_MALLOC src/9.20.c src/mm.v1/mm.c src/mm/memlib.c src/csapp.c -lpthread  -I./src/mm/ -I./src/ -o 9.17malloc
+    gcc -DCUS_MALLOC src/9.20.c src/mm.v2/mm.c src/mm/memlib.c src/csapp.c -lpthread  -I./src/mm/ -I./src/ -o 9.18malloc
+    gcc src/9.20.c -o stdmalloc
+
+test
+
+    time ./9.17malloc && time ./9.18malloc && time ./stdmalloc
+    malloc size: 25000000, heap_size: 28311552
+
+    real    0m0.011s
+    user    0m0.000s
+    sys     0m0.008s
+    malloc size: 25000000, heap_size: 28311552
+
+    real    0m0.009s
+    user    0m0.000s
+    sys     0m0.004s
+    malloc size: 25000000, heap_size: 28311552
+
+    real    0m0.009s
+    user    0m0.000s
+    sys     0m0.004s
+
+    
