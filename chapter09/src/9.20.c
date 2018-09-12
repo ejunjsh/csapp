@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #endif
 
-#define LOOP 10000
+#define LOOP 100000
 
 int main(int argc, char* argv[]) {
   void* m_start = sbrk(0);
@@ -19,10 +19,15 @@ int main(int argc, char* argv[]) {
 
   int i;
   for (i = 0; i < LOOP; i+=2) {
+    #ifdef CUS_MALLOC
+    void* ptr_f = mm_malloc(i);
+    void* ptr = mm_malloc(i+1);
+    mm_free(ptr_f);
+    #else
     void* ptr_f = malloc(i);
     void* ptr = malloc(i+1);
     free(ptr_f);
-
+    #endif
     malloc_size += i+1;
   }
 

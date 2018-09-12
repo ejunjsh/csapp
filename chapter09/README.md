@@ -198,17 +198,16 @@ build
 
 ## 9.20
 
-use 9.17 and 9.18 malloc to test with the std malloc
+use 9.18 malloc to test with the std malloc
 
 build
 
-    gcc -DCUS_MALLOC src/9.20.c src/mm.v1/mm.c src/mm/memlib.c src/csapp.c -lpthread  -I./src/mm/ -I./src/ -o 9.17malloc
-    gcc -DCUS_MALLOC src/9.20.c src/mm.v2/mm.c src/mm/memlib.c src/csapp.c -lpthread  -I./src/mm/ -I./src/ -o 9.18malloc
+    gcc -DCUS_MALLOC src/9.20.c src/mm.v2/mm.c src/mm/memlib.c src/csapp.c -lpthread  -I./src/mm/ -I./src/ -o mymalloc
     gcc src/9.20.c -o stdmalloc
 
 test
 
-    time ./9.17malloc && time ./9.18malloc && time ./stdmalloc
+    time ./mymalloc && time ./stdmalloc
     malloc size: 25000000, heap_size: 28311552
 
     real    0m0.011s
