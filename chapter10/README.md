@@ -4,3 +4,17 @@
 ````shell
 mkdir bin
 ````
+
+## 10.6
+
+build
+
+    gcc -o bin/10.6 src/10.6.c src/csapp.c
+
+run
+
+    bin/10.6
+
+output
+
+    fd2 = 4
