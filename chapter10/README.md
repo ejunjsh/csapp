@@ -45,3 +45,14 @@ run
         Dup2(0, 3);
         Execve("fstatcheck", argv, envp);
     }
+
+## 10.10
+
+build
+
+    gcc -o bin/10.10 src/10.10.c src/csapp.c
+
+run
+
+    bin/10.10
+
