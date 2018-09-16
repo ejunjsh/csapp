@@ -28,3 +28,13 @@ build
 run
 
     bin/10.7
+
+## 10.8
+
+build
+
+    gcc -o bin/10.8 src/10.8.c src/csapp.c
+
+run
+
+    bin/10.8
