@@ -33,8 +33,15 @@ run
 
 build
 
-    gcc -o bin/10.8 src/10.8.c src/csapp.c
+    gcc -o bin/fstatcheck src/10.8.c src/csapp.c
 
 run
 
-    bin/10.8
+    bin/fstatcheck
+
+## 10.9
+
+    if (Fork() == 0) {
+        Dup2(0, 3);
+        Execve("fstatcheck", argv, envp);
+    }
