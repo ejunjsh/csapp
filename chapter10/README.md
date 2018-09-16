@@ -18,3 +18,13 @@ run
 output
 
     fd2 = 4
+
+## 10.7
+
+build
+
+    gcc -o bin/10.7 src/10.7.c src/csapp.c
+
+run
+
+    bin/10.7
