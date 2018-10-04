@@ -2,12 +2,13 @@
 
 ## precondition
 ````shell
-mkdir bin
+mkdir cgi-bin
 ````
 
 ## tiny web server
 
-    gcc -o bin/tiny src/*.c
+    gcc -o tiny src/tiny.c src/csapp.c
+    gcc -o cgi-bin/form-adder src/cgi-bin/form-adder.c
 
-    bin/tiny 9090
+    ./tiny 9090
 
