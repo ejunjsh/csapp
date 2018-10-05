@@ -33,3 +33,15 @@ In my safari,it use `http/1.1`,below is the output
     Accept-Language: en-us
     Accept-Encoding: gzip, deflate
     Connection: keep-alive
+
+## 11.7
+
+### build and run
+
+    gcc -o tiny.7 src/tiny.7.c src/csapp.c
+
+    ./tiny.7 9090
+
+### test
+
+navigate to [http://localhost:9090/example.mpeg](http://localhost:9090/example.mpeg)
