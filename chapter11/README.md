@@ -118,3 +118,16 @@ the `home.html` use `GET` method to send data from header, now the `post-home.ht
 ### test in browser
 
 [http://localhost:9090/post-home.html](http://localhost:9090/post-home.html)
+
+## 11.13
+
+just ignore the `SIGPIPE` signal in code
+
+      if (Signal(SIGPIPE, SIG_IGN) == SIG_ERR)
+        unix_error("mask signal pipe error");
+
+### build and run
+
+    gcc -o tiny.13 src/tiny.13.c src/csapp.c
+
+    ./tiny.13 9090
