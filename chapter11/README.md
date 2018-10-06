@@ -5,10 +5,9 @@
 mkdir cgi-bin
 ````
 
-## tiny web server
+## build original tiny web server
 
     gcc -o tiny src/tiny.c src/csapp.c
-    gcc -o cgi-bin/form-adder src/cgi-bin/form-adder.c
 
     ./tiny 9090
 
@@ -45,3 +44,63 @@ In my safari,it use `http/1.1`,below is the output
 ### test
 
 navigate to [http://localhost:9090/example.mpeg](http://localhost:9090/example.mpeg)
+
+## 11.8
+
+### build and run
+
+    gcc -o tiny.8 src/tiny.8.c src/csapp.c
+
+    ./tiny.8 9090
+
+## 11.9
+
+### build and run
+
+    gcc -o tiny.9 src/tiny.9.c src/csapp.c
+
+    ./tiny.9 9090
+
+## 11.10
+
+### build cgi
+
+    gcc -o cgi-bin/form-adder src/cgi-bin/form-adder.c
+
+### use original tiny to run
+
+    ./tiny 9090
+
+### see result in browser
+
+[http://localhost:9090](http://localhost:9090)
+
+## 11.11
+
+### build cgi
+
+    gcc -o cgi-bin/head-adder src/cgi-bin/head-adder.c
+
+### build and run
+
+    gcc -o tiny.11 src/tiny.11.c src/csapp.c
+
+    ./tiny.11 9090
+
+### telent test
+
+    ➜ telnet localhost 9090
+    Trying ::1...
+    Connected to localhost.
+    Escape character is '^]'.
+    HEAD /
+
+    HTTP/1.0 200 OK
+    Server: Tiny Web Server
+    Connection: close
+    Content-length: 325
+    Content-type: text/html
+
+    Connection closed by foreign host.
+
+you will see the `HEAD /` only get the header , there are not body.This is `HEAD` method that don't return body.
