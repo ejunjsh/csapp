@@ -104,3 +104,17 @@ navigate to [http://localhost:9090/example.mpeg](http://localhost:9090/example.m
     Connection closed by foreign host.
 
 you will see the `HEAD /` only get the header , there are not body.This is `HEAD` method that don't return body.
+
+## 11.12
+
+the `home.html` use `GET` method to send data from header, now the `post-home.html` use `POST` method to send data from body.
+
+### build and run
+
+    gcc -o tiny.12 src/tiny.12.c src/csapp.c
+
+    ./tiny.12 9090
+
+### test in browser
+
+[http://localhost:9090/post-home.html](http://localhost:9090/post-home.html)
