@@ -28,3 +28,21 @@ B. use `pthread_exit`
 ### run
 
     bin/12.17
+
+## 12.18
+
+A unsafe
+
+B safe
+
+C unsafe
+
+## 12.19
+
+### build
+
+    gcc -o bin/12.19 src/12.19.c src/csapp.c
+
+### run
+
+    bin/12.16
