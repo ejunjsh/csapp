@@ -5,6 +5,16 @@
 mkdir bin
 ````
 
+## code 12.26 from book
+
+### build
+
+    gcc -o bin/reader-writer.c src/12.16.c src/csapp.c
+
+### run
+
+    bin/reader-writer
+
 ## 12.16
 
 ### build
