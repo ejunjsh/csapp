@@ -18,13 +18,13 @@ void *reader(void *vargp) {
   while (1) {
     P(&mutex);
     readcnt++;
+    readtimes++;
+    reader_first = 0;
     if (readcnt == 1)
       P(&w);
     V(&mutex);
 
     /* Critical section */
-    readtimes++;
-    reader_first = 0;
     /* Critical section */
 
     P(&mutex);
