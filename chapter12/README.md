@@ -55,4 +55,14 @@ C unsafe
 
 ### run
 
-    bin/12.16
+    bin/12.19
+
+## 12.20
+
+### build
+
+    gcc -o bin/12.20 src/12.20.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.20
