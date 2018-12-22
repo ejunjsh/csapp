@@ -76,3 +76,17 @@ C unsafe
 ### run
 
     bin/12.21
+
+## 12.22
+
+### build
+
+    gcc -o bin/12.22 src/12.22.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.22
+
+### test
+
+    telnet localhost 5000
