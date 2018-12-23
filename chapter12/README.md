@@ -435,3 +435,33 @@ thread 2 and thread 3
 C.
 
 keep same order P(a), P(b), P(c) in every thread
+
+## 12.31
+
+### build
+
+    gcc -o bin/12.31 src/12.31.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.31
+
+## 12.32
+
+### build
+
+    gcc -o bin/12.32 src/12.32.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.32
+
+## 12.33
+
+### build
+
+    gcc -o bin/12.33 src/12.33.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.33
