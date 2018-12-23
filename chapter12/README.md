@@ -128,3 +128,15 @@ if don't pass pointer param which points to same data block, functions
 
 are all implicitly reentrant functions
 
+## 12.25
+
+see [echo_cnt.c](https://github.com/ejunjsh/csapp/blob/master/chapter12/src/echo_cnt.c)
+
+thread safe?
+
+Yes, mutex make it safe
+
+reentrant?
+
+No, share the same mutex,will cause the dead lock
+
