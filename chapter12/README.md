@@ -465,3 +465,30 @@ keep same order P(a), P(b), P(c) in every thread
 ### run
 
     bin/12.33
+
+
+## 12.34
+
+### build
+
+    gcc -o bin/12.34.concurrent src/12.34.concurrent.c src/csapp.c -lpthread
+    gcc -o bin/12.34.non.concurrent src/12.34.non.concurrent.c src/csapp.c -lpthread
+
+### test
+
+    time bin/12.34.concurrent && time bin/12.34.non.concurrent
+
+### example
+
+    $ time bin/12.34.concurrent&& time bin/12.34.non.concurrent
+
+    real    0m0.296s
+    user    0m1.008s
+    sys     0m0.004s
+
+    real    0m0.771s
+    user    0m0.768s
+    sys     0m0.000s
+
+    obviously the concurrent version is faster than the serial version.
+
