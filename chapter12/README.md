@@ -176,3 +176,262 @@ but
 after `fclose(fpin);` in thread 1, fd N is reusable again. assume thread 2 use
 the fd N again: thread 1 execute line `fclose(fpout);` close the fd that thread
 2 is using. it'll cause something unpredicted.
+
+## 12.28
+
+No effect on deadlock
+
+1
+
+|thread 1|thread 2|
+|-|-|
+|P(s)|P(s)|
+|P(t)|P(t)|
+|V(s)|V(s)|
+|V(t)|V(t)|
+
+
+        +
+        |
+        |
+        +                   +--------------------+
+    V(t)|                   |                    |
+        |                   |                    |
+        +                   |  unsafe region t   |
+        |                   |                    |
+        |                   |                    |
+        +         +---------+---------+          |
+    V(s)|         |         |         |          |
+        |         |         |         |          |
+        +         |         |         |          |
+        |         |         |         |          |
+        |         |         |         |          |
+        +         |         +---------+----------+
+    P(t)|         |                   |
+        |         |  unsafe region s  |
+        +         |                   |
+        |         |                   |
+        |         |                   |
+        +         +-------------------+
+    P(s)|
+        |
+        +
+        |
+        |
+        +----+----+----+----+----+----+----+----+----+  thread 1
+              P(s)      P(t)      V(s)      V(t)
+
+
+
+2
+
+|thread 1|thread 2|
+|-|-|
+|P(s)|P(s)|
+|P(t)|P(t)|
+|V(s)|V(t)|
+|V(t)|V(s)|
+
+
+        +
+        |
+        |
+        +         +-------------------+
+    V(s)|         |                   |
+        |         |                   |
+        +         |                   |
+        |         |                   |
+        |         |                   |
+        +         |         +---------+----------+
+    V(t)|         |         |         |          |
+        |         |         |         | unsafe   |
+        +         |         |         | region   |
+        |         |         |         |    t     |
+        |         |         |         |          |
+        +         |         +---------+----------+
+    P(t)|         |                   |
+        |         |                   |
+        +         | unsafe region s   |
+        |         |                   |
+        |         |                   |
+        +         +-------------------+
+    P(s)|
+        |
+        +
+        |
+        |
+        +----+----+----+----+----+----+----+----+----+  thread 1
+              P(s)      P(t)      V(s)      V(t)
+
+
+
+
+3
+
+|thread 1|thread 2|
+|-|-|
+|P(s)|P(s)|
+|P(t)|P(t)|
+|V(t)|V(s)|
+|V(s)|V(t)|
+
+
+        +
+        |
+        |
+        +                   +---------+
+    V(t)|                   | unsafe  |
+        |                   | region  |
+        +                   |   t     |
+        |                   |         |
+        |                   |         |
+        +         +---------+---------+----------+
+    V(s)|         |         |         |          |
+        |         |         |         |          |
+        +         |         |         |          |
+        |         |         |         |          |
+        |         |         |         |          |
+        +         |         +---------+          |
+    P(t)|         |                              |
+        |         |                              |
+        +         |    unsafe region s           |
+        |         |                              |
+        |         |                              |
+        +         +------------------------------+
+    P(s)|
+        |
+        +
+        |
+        |
+        +----+----+----+----+----+----+----+----+----+  thread 1
+              P(s)      P(t)      V(t)      V(s)
+
+
+
+
+4
+
+|thread 1|thread 2|
+|-|-|
+|P(s)|P(s)|
+|P(t)|P(t)|
+|V(t)|V(t)|
+|V(s)|V(s)|
+
+
+        +
+        |
+        |
+        +         +------------------------------+
+    V(s)|         |                              |
+        |         |                              |
+        +         |                              |
+        |         |                              |
+        |         |                              |
+        +         |         +----------+         |
+    V(t)|         |         | unsafe   |         |
+        |         |         | region   |         |
+        +         |         |    t     |         |
+        |         |         |          |         |
+        |         |         |          |         |
+        +         |         +----------+         |
+    P(t)|         |                              |
+        |         |                              |
+        +         |    unsafe region s           |
+        |         |                              |
+        |         |                              |
+        +         +------------------------------+
+    P(s)|
+        |
+        +
+        |
+        |
+        +----+----+----+----+----+----+----+----+----+  thread 1
+              P(s)      P(t)      V(t)      V(s)
+
+
+## 12.29
+
+no deadlock
+
+
+initial: a = 1, b = 1, c = 1
+
+|thread 1|thread 2|
+|-|-|
+|P(a)|P(c)|
+|P(b)|P(b)|
+|V(b)|V(b)|
+|P(c)|V(c)|
+|V(c)|----|
+|V(a)|----|
+
+thread 2 doesn't manipulate mutex a and initial a is 1, so P(a), V(a) don't affect deadlock status.
+
+|thread 1|thread 2|
+|-|-|
+|P(b)|P(c)|
+|V(b)|P(b)|
+|P(c)|V(b)|
+|V(c)|V(c)|
+
+        +
+        |
+        |
+        +                             +----------+
+    V(c)|                             |          |
+        |                             |          |
+        +                             |          |
+        |                             |          |
+        |                             |          |
+        +         +----------+        |          |
+    V(b)|         |          |        |          |
+        |         |          |        |          |
+        +         |          |        |          |
+        |         |          |        |          |
+        |         |          |        |          |
+        +         +----------+        |          |
+    P(b)|                             |          |
+        |                             |          |
+        +                             |          |
+        |                             |          |
+        |                             |          |
+        +                             +----------+
+    P(c)|
+        |
+        +
+        |
+        |
+        +----+----+----+----+----+----+----+----+----+  thread 1
+              P(b)      V(b)      P(c)      V(c)
+
+
+## 12.30
+
+
+initial: a = 1, b = 1, c = 1
+
+|thread 1|thread 2|thread 3|
+|-|-|-|
+|P(a)|P(c)|P(c)|
+|P(b)|P(b)|V(c)|
+|V(b)|V(b)|P(b)|
+|P(c)|V(c)|P(a)|
+|V(c)|P(a)|V(a)|
+|V(a)|V(a)|V(b)|
+
+A.
+
+thread 1: a&b, a&c
+
+thread 2: b&c
+
+thread 3: a&b
+
+B.
+
+thread 2 and thread 3
+
+C.
+
+keep same order P(a), P(b), P(c) in every thread
