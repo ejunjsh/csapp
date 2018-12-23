@@ -140,3 +140,12 @@ reentrant?
 
 No, share the same mutex,will cause the dead lock
 
+## 12.26
+
+### build
+
+    gcc -o bin/12.26 src/12.26.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.26
