@@ -90,3 +90,41 @@ C unsafe
 ### test
 
     telnet localhost 5000
+
+## 12.23
+
+### build
+
+    gcc -o bin/12.23.client src/12.23.client.c src/csapp.c -lpthread
+    gcc -o bin/12.23.bug src/12.23.bug.c src/csapp.c -lpthread
+    gcc -o bin/12.23 src/12.23.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.23.bug
+    bin/12.23
+    bin/12.23.client
+
+### test
+
+    bin/12.23.bug
+    bin/12.23.client
+
+you will see `Connection reset by peer`,and server clash.
+
+    bin/12.23
+
+it will deal with the error without clash.
+
+## 12.24
+
+if don't pass pointer param which points to same data block, functions
+
+    rio_readn
+    rio_writen
+    rio_readinitb
+    rio_readlineb
+    rio_readnb
+
+are all implicitly reentrant functions
+
