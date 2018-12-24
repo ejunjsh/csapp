@@ -492,3 +492,16 @@ keep same order P(a), P(b), P(c) in every thread
 
     obviously the concurrent version is faster than the serial version.
 
+## 12.35
+
+### build
+
+    gcc -o bin/12.35 src/12.35.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.35
+
+### test
+
+click the link [http://localhost:5000](http://localhost:5000)
