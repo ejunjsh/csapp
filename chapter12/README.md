@@ -547,3 +547,14 @@ click the link [http://localhost:5000](http://localhost:5000)
 ### test
 
 click the link [http://localhost:5000](http://localhost:5000)
+
+## 12.39
+
+### build
+
+    gcc -o bin/12.39.proxy src/12.39.proxy.c src/csapp.c -lpthread
+    gcc -o bin/12.39.proxy-thread src/12.39.proxy-thread.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.36
