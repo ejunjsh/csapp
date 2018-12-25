@@ -505,3 +505,45 @@ keep same order P(a), P(b), P(c) in every thread
 ### test
 
 click the link [http://localhost:5000](http://localhost:5000)
+
+## 12.36
+
+### build
+
+    gcc -o bin/12.36 src/12.36/*.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.36
+
+### test
+
+click the link [http://localhost:5000](http://localhost:5000)
+
+## 12.37
+
+### build
+
+    gcc -o bin/12.37 src/12.37.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.37
+
+### test
+
+click the link [http://localhost:5000](http://localhost:5000)
+
+## 12.38
+
+### build
+
+    gcc -o bin/12.38 src/12.38/*.c src/csapp.c -lpthread
+
+### run
+
+    bin/12.38
+
+### test
+
+click the link [http://localhost:5000](http://localhost:5000)
